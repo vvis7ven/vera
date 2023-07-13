@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Vera</title>
+	
+	<style>
+		body {
+			background-color: black;
+			font-family: Verdana, Geneva, Tahoma, sans-serif ヒラギノ角ゴ Pro W3, sans-serif;
+			margin: 0;
+			padding: 0;
+		}
+
+        #gif {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url(https://imgs.search.brave.com/nJywYIzriIHAUgm5pzoYgT9BA_TLzb13s1DE4bjQSD0/rs:fit:220:331:1/g:ce/aHR0cHM6Ly9tZWRp/YS50ZW5vci5jb20v/aW1hZ2VzLzc0NTQ2/N2ZlMGExMjcwOTZh/MTU5Mjk3ZTExOGRk/ZDljL3Rlbm9yLmdp/Zg.gif);
+            background-repeat: repeat;
+            opacity: 0.7;
+            mix-blend-mode: difference;
+            z-index: -1;
+        }
+		
+		#navigation {
+			position: fixed;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 200px;
+			background-image: url("https://imgs.search.brave.com/NKmMGQlMoOXSG_NCVDHJAfBwmHuSWLNcaLWfTZ-qUCw/rs:fit:1200:728:1/g:ce/aHR0cHM6Ly9jZG4x/MzAucGljc2FydC5j/b20vMjU5ODAxNTM3/MDAxMjEyLnBuZw");
+			background-size: cover;
+			color: rgb(105, 50, 69);
+			padding: 20px;
+			box-sizing: border-box;
+			display: none;
+
+			transform: translateX(-100%);
+  			transition: transform 0.3s ease-out;
+			  border: 10px solid rgba(110, 182, 211, 0.363); /* transparent border */
+  				box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* colored glow */
+			}
+
+			#navigation.open {
+				display: block;
+		    transform: translateX(0);
+			}
+
+		
+		
+        #toggle-navigation {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        background-image: url('/home/_k/Downloads/Imgs/web graphics collection/skel.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        cursor: pointer;
+        z-index: 7777;
+        transition: all 0.2s ease-in-out;
+        -webkit-animation-direction: reverse;
+        animation-direction: reverse;
+}
+
+#toggle-navigation:hover {
+  background-image: url('null');
+}
+
+
+		
+		#content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+			margin: 0 200px;
+			padding: 20px;
+			box-sizing: border-box;
+			color: white;
+			text-align: center;
+		}
+		
+		#header {
+			font-size: 24px;
+			color: #f31f1894; 
+			font-weight: bold;
+			text-shadow: 2px 2px 4px #000000;
+			margin-bottom: 10px;
+		}
+		
+		.link {
+			font-family: 'MS PGothic', farial, sans-serif; /* Change font */
+  			font-size: 20px; /* Adjust size */
+ 		 	color: #ffffff; /* Change color */
+  			text-decoration: none; /* Removes underline */
+  			display: block; /* Arrange each link have its own line */
+  			padding: 33px 0; /* Adds some vertical spacing between links */
+  			transition: color 0.3s ease; /* Makes color change smoothly */
+		}
+		
+		.link:hover {
+			color: rgb(255, 0, 0);
+            color-interpolation-filters: linearRGB;
+		}
+		
+		#links {
+			position: absolute;
+  			top: 50%;
+  			right: calc(50% - 250px); /* Adjust as needed */
+  			transform: translateY(-40%);
+  			margin-left: 30px; /* Add some space to the left of the links */
+			}
+
+		#thunder {
+			position: absolute;
+  			top: 50%;
+  			left: 50%;
+  				transform: translate(-50%, -50%);
+  			width: 300px;
+  			height: 300px;
+  				border: 10px solid rgba(110, 182, 211, 0.363); /* transparent border */
+  				box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.5); /* colored glow */
+        }
+	</style>
+</head>
+<body>
+
+	
+    <div id="gif"></div>
+    <canvas id="toggleNavigation"></canvas>
+    
+	<div id="navigation">
+		<div id="header">Directory</div>
+		<a href="#" class="link">Info</a>
+		<a href="#" class="link">Archive</a>
+		<a href="#" class="link">Vault</a>
+	</div>
+	<div id="toggle-navigation">
+        <span>Hi</span>
+      </div>
+      
+	<div id="content">
+			<div id="links">
+				<a href="#" class="link" onclick="openWindow('Bing Bong')">Loved</a>
+				<a href="#" class="link" onclick="openWindow('Moo')">The</a>
+				<a href="#" class="link" onclick="openWindow('Meow')">Wait</a>
+			  </div>
+		<img src="http://clipart-library.com/image_gallery/n1379285.gif" alt="Thunder" id="thunder">
+	</div>
+	
+	
+	
+	<script>
+	
+
+
+var toggleNavigation = document.getElementById("toggle-navigation");
+var navigation = document.getElementById("navigation");
+
+toggleNavigation.addEventListener("click", function() {
+  if (navigation.classList.contains('open')) {
+    navigation.classList.remove('open');
+  } else {
+    navigation.classList.add('open');
+  }
+});
+
+var links = document.querySelectorAll('.link');
+
+links.forEach(function(link) {
+  link.addEventListener('click', function() {
+    var colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+    var randomColor = colors[Math.floor(Math.random() * colors.length)];
+    link.style.color = randomColor;
+  });
+});
+
+function openWindow(title) {
+  // Create a new div element for the window
+  var newWindow = document.createElement('div');
+
+  // Add an id to the new div
+  newWindow.id = 'newWindow';
+
+  // Add content to the new div
+  newWindow.innerHTML = '<h1>' + title + '</h1><p>Soon.</p>';
+
+  // Style the new div to look like a window
+  newWindow.style.position = 'absolute';
+  newWindow.style.top = '50%';
+  newWindow.style.left = '50%';
+  newWindow.style.transform = 'translate(-90%, -50%)';
+  newWindow.style.width = '600px'; // Adjust the width as needed
+  newWindow.style.height = '600px'; // Adjust the height as needed
+  newWindow.style.backgroundColor = '#cdb5cd';
+  newWindow.style.border = '1px solid #000000';
+  newWindow.style.padding = '10px';
+  newWindow.style.boxSizing = 'border-box';
+
+  // Create a new div element for the close button
+  var closeButton = document.createElement('div');
+
+  // Add content to the close button
+  closeButton.innerHTML = 'X';
+
+  // Style the close button
+  closeButton.style.position = 'absolute';
+  closeButton.style.top = '-10px';
+  closeButton.style.right = '-10px';
+  closeButton.style.cursor = 'pointer';
+
+  // Add an event listener to the close button
+  closeButton.addEventListener('click', closeWindow);
+
+  // Add the close button to the new window
+  newWindow.appendChild(closeButton);
+
+  // Add the new window to the #content element
+  document.getElementById('content').appendChild(newWindow);
+}
+
+function closeWindow() {
+  // Remove the new window from the #content element
+  var newWindow = document.getElementById('newWindow');
+  newWindow.parentNode.removeChild(newWindow);
+}
+
+	</script>
+</body>
+</html>
